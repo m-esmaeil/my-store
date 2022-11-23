@@ -1,0 +1,18 @@
+1) the structure component in app
+    App-component  
+        -> card-component (contain details of one product {id, name, description, price, url,} and select element to determine number of product to add to Cart)
+        -> title-component (contain dynamic title to the parent page which inject into)
+        -> products-module (contain two component ) :-
+                    -> product-component (dispaly list of products for user to choose from to add to cart)
+                    -> dispaly-component (dispaly details of one product and has button to add to cart)
+        
+2) use app :-
+    a- start application in product list page which display all allowed products.
+    b- click on one product reddirect to dispaly page which render (product-id in route & product-title as querystring parameter).
+        in the top of page there is button to return to product list
+    c- you can add product to cart by click on "add To Cart" button or by click on the same button in product details page.
+    d- you can't add to cart if the count is zeroo, after adding you get alert messege.
+    e- after adding products to cart you can go to cart details by clicking link in nav bar
+    f- in cart details you can see total price for every product and total price to all cart
+    g- in submit section there is validation required (username, address) and credit must 6 digit
+    h- after submit you redirect to congratulation page with dispaly total price 

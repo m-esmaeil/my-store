@@ -1,0 +1,26 @@
+
+  <div class="card my-4 shadow">
+    <form #cardForm="ngForm">
+      <input type="hidden" name="id" #id="ngModel" ngModel [value]="source.id">
+      <img [src]="source.url" 
+           class="card-img-top img-thumbnail shadow" 
+           alt="{{source.name}}" 
+           role="button" 
+           [routerLink]="['/products/display', source.id]"
+           [queryParams]="{ title: source.name }"
+           >
+
+      <div class="card-body">
+        <h5 class="card-title" role="button" [routerLink]="['/products/display', source.id]">{{ source.name }}</h5>
+        <p class="card-text">{{ source.description }}</p>
+        <div class="d-flex justify-content-between mb-lg-4">
+          <span class="text-primary">{{ source.price | currency }}</span>
+          <select class="form-select form-select-sm w-25" aria-label=".form-select-sm example" name="count" #count="ngModel" ngModel>
+            <option *ngFor="let item of items">{{item}}</option>
+          </select>
+        </div>
+        <span class="text-danger d-inline-block" *ngIf="count.value == 0 && count.touched">Count must be greater than Zeroo!</span>
+        <button type="button" (click)="addToCart(source.id, count.value)" class="btn btn-primary d-block mt-2">Add To Card</button>
+      </div>
+    </form>
+  </div>
