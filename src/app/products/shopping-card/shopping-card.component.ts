@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { Payment, Shopping } from '../shopping.model';
+import { Shopping } from '../shopping.model';
 import { ShoppingService } from '../shopping.service';
+
 
 @Component({
   selector: 'app-shopping-card',
   templateUrl: './shopping-card.component.html',
-  styleUrls: ['./shopping-card.component.css']
+  styleUrls: ['./shopping-card.component.css'],
+  providers: [MessageService]
 })
 export class ShoppingCardComponent implements OnInit {
 
@@ -17,7 +20,7 @@ export class ShoppingCardComponent implements OnInit {
   totalPrice = 0;
   items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  constructor(private shoppingService : ShoppingService,private route: Router) { 
+  constructor(private shoppingService : ShoppingService, private route: Router, private messageService: MessageService) { 
 
   }
 
@@ -30,7 +33,6 @@ export class ShoppingCardComponent implements OnInit {
     this.shoppingCartDetails$ = this.shoppingService.shoppingCart$.subscribe(res => {
       this.shoppingCartDetails = res;
       this.calculateTotalPrice();
-      console.log(res);
     })
   }
 
@@ -44,6 +46,7 @@ export class ShoppingCardComponent implements OnInit {
   updatePrice(id:number, price: number, count: number){
     if(count == 0){
       this.shoppingService.removeProductFromShoopingCart(id);
+      this.addSingle();
       this.getAllCarts();
 
     }else{
@@ -52,8 +55,17 @@ export class ShoppingCardComponent implements OnInit {
             product2Update.count = count;
             product2Update.total = price*count;
             this.getAllCarts();
+            this.update();
       }   
     }
   }
 
+  addSingle() {
+    this.messageService.add({severity:'info', summary:'Deleted Messege', detail:'your Product deleted successfully!'});
+  }
+
+  
+  update() {
+    this.messageService.add({severity:'success', summary:'Updated Messege', detail:'your Product updated successfully!'});
+  }
 }

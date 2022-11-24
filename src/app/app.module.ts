@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProductsModule } from './products/products.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
         AppRoutingModule,
         HttpClientModule,
         RouterModule,
-        ProductsModule
+        ProductsModule,
+        BrowserAnimationsModule
+        
     ]
 })
 export class AppModule { }
