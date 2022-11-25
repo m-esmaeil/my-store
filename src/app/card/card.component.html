@@ -1,11 +1,11 @@
 
   <div class="card my-4 shadow">
     <form #cardForm="ngForm">
-      <input type="hidden" name="id" #id="ngModel" ngModel [value]="source.id">
+      <input type="hidden" name="id" #id="ngModel" ngModel value="source.id">
       <img [src]="source.url" 
            class="card-img-top img-thumbnail shadow" 
            alt="{{source.name}}" 
-           role="button" 
+           role="button"
            [routerLink]="['/products/display', source.id]"
            [queryParams]="{ title: source.name }"
            >

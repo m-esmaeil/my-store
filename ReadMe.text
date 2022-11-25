@@ -16,3 +16,16 @@
     f- in cart details you can see total price for every product and total price to all cart
     g- in submit section there is validation required (username, address) and credit must 6 digit
     h- after submit you redirect to congratulation page with dispaly total price 
+
+    ==============================================================================
+
+    ----------------
+     reviewing Notes
+    ----------------
+    1- add notification in bottom-right page when update, or delete product in cart using third party (PrimeNg-Toaster)
+    2- make strict validate to form input in shopping cart 
+            - (user name and address) must be more than 4 charachter, required
+            - credit number required, must be 6 digits, accept only digit not letter
+            - submit button is disable if form is invalide
+    3- I am replace 'change' event in shopping with 'ngModelChange()' to update total price when count of item changed
+    4- 

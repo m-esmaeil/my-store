@@ -24,26 +24,7 @@ export class DisplayComponent implements OnInit {
   productSubscription : Subscription;
 
   constructor(private router : Router ,private route : ActivatedRoute, private productService: ProductService) { 
-    // this.routeSubscription = this.route.params.subscribe(params => {
-    //   this.routeId = +params['id'];
-    // });
-
-    // this.productSubscription = this.productService.productList$.subscribe(res => {
-    //   if(this.routeId === undefined) return;
-
-    //   const productCard = res.find(s => s.id === this.routeId);
-    //   if(!productCard){
-    //     this.router.navigate(['404']);
-    //     return;
-    //   }
-
-    //   this.cardSource = productCard;
-    // })
   }
-  // ngOnDestroy(): void {
-  //   this.routeSubscription.unsubscribe();
-  //   this.productSubscription.unsubscribe();
-  // }
 
   ngOnInit() {
 
@@ -53,14 +34,15 @@ export class DisplayComponent implements OnInit {
     });
 
     //get product name from query string
-    // this.route.queryParamMap.subscribe(Qparams => {
-    //   console.log(Qparams);
-    //   this.title = "Details : " + Qparams.get('title');
-    // })
+    this.route.queryParamMap.subscribe(Qparams => {
+      this.title = "Details : " + Qparams.get('title');
+    })
 
+    
     this.productService.getAll().subscribe(res => {
       this.cardSource = res.find(r=>r.id==this.routeId)??{}as Product;
-    })
+    });
+
   }
 
 }

@@ -18,7 +18,7 @@
                 <span>price :{{ cart.price | currency }}</span>  
                 <div class="row d-flex">
                     <label class="col-sm-2  col-form-label">Amount</label>
-                    <select class="form-control d-inline-flex" name="count" [(ngModel)]="cart.count" #count="ngModel" (change)="updatePrice(cart.id ,cart.price, count.value)">
+                    <select class="form-control d-inline-flex" name="count" [(ngModel)]="cart.count" #count="ngModel" (ngModelChange)="updatePrice(cart.id ,cart.price, count.value)">
                         <option value="{{ item }}" *ngFor="let item of items">{{ item }}</option>
                     </select>
                 </div>
@@ -29,12 +29,13 @@
 
     <!-- section of payment checkout-->
     <div class="d-flex flex-column w-25 form-control border-0 p-lg-4">
-        <h4 class="text-center mb-4"><u>Credit Details</u></h4>
+        <h2 class="text-center mb-lg-2"><u>Credit Details</u></h2>
 
         <form #userForm="ngForm">
-            <h5 class="text-primary mb-2 d-flex justify-content-center align-content-center">
+            <h3 class="text-primary mb-1 d-flex justify-content-center align-content-center">
                 Total price {{ totalPrice | currency }}
-            </h5>
+                <input type="hidden" name="totalPrice" ngModel #totalPric="ngModel" [ngModel]="totalPrice">
+            </h3>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
                 <input type="text" class="form-control ng-valide ng-invalide" placeholder="User Name" #userName="ngModel" required minlength="4" ngModel name="userName">

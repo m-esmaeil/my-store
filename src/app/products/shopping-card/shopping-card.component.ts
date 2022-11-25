@@ -64,7 +64,6 @@ export class ShoppingCardComponent implements OnInit {
     this.messageService.add({severity:'info', summary:'Deleted Messege', detail:'your Product deleted successfully!'});
   }
 
-  
   update() {
     this.messageService.add({severity:'success', summary:'Updated Messege', detail:'your Product updated successfully!'});
   }

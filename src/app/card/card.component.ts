@@ -1,6 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { retry, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Product } from '../products/product.model';
 import { ProductService } from '../products/product.service';
 import { ShoppingService } from '../products/shopping.service';
@@ -57,30 +57,6 @@ export class CardComponent implements OnInit{
     }
 
     this.shoppingService.addProductToShoppingCart(this.productToAdd);
-
     });
-
-    // this.productSubscription = this.productService.getAll.subscribe(res => {
-    //   if(id === undefined) return;
-
-    //   const product = res.find(s => s.id === id);
-
-    //   if(!product){
-    //     this.router.navigate(['404']);
-    //     return;
-    //   }
-
-    //   this.productToAdd = {
-    //     id: id,
-    //     name: product.name,
-    //     count: count,
-    //     url: product.url,
-    //     price: product.price,
-    //     total: product.price * count
-    //   }
-      
-    //   this.shoppingService.addProductToShoppingCart(this.productToAdd)
-      
-    // });
   }
 }
