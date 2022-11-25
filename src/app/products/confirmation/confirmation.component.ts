@@ -13,8 +13,8 @@ export class ConfirmationComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(res => {
-      this.totalPrice = +(res.get('totalPrice')?? 0);
+    this.route.params.subscribe(params => {
+      this.totalPrice = +params['totalPrice'];
     })
   }
 

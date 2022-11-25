@@ -31,41 +31,7 @@
     <div class="d-flex flex-column w-25 form-control border-0 p-lg-4">
         <h2 class="text-center mb-lg-2"><u>Credit Details</u></h2>
 
-        <form #userForm="ngForm">
-            <h3 class="text-primary mb-1 d-flex justify-content-center align-content-center">
-                Total price {{ totalPrice | currency }}
-                <input type="hidden" name="totalPrice" ngModel #totalPric="ngModel" [ngModel]="totalPrice">
-            </h3>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                <input type="text" class="form-control ng-valide ng-invalide" placeholder="User Name" #userName="ngModel" required minlength="4" ngModel name="userName">
-                <div class="text-danger" *ngIf="userName.invalid && (userName.dirty || userName.touched)">
-                    <span class="text-danger d-block" *ngIf="userName.errors?.['required']">this field is Required</span>
-                    <span class="text-danger d-block" *ngIf="userName.errors?.['minlength']">User Name must be at least 4 characters long</span>
-                </div>
-            </div>
-            
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Address</label>
-                <input type="text" class="form-control ng-valide ng-invalide" placeholder="Enter Your Address" required minlength="4" name="address" #address="ngModel" ngModel>
-                <div class="text-danger" *ngIf="address.invalid && (address.dirty || address.touched)">
-                    <span class="text-danger d-block" *ngIf="address.errors?.['required']">this field is Required</span>
-                    <span class="text-danger d-block" *ngIf="address.errors?.['minlength']">Address must be at least 4 characters long</span>
-                </div>
-            </div>
+        <app-payment-form [totalPriceToChild]="totalPrice" (userDataToParent)="receiveDataInParent($event)"></app-payment-form>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Credit Card number</label>
-                <input class="form-control ng-valide ng-invalide" maxlength="6" minlength="6" required [pattern]="'^-?[0-9]*$'" placeholder="Digit-6" name="credit" #credit="ngModel" ngModel>
-                <div class="text-danger" *ngIf="credit.invalid && (credit.dirty || credit.touched)">
-                    <span class="text-danger d-block" *ngIf="credit.errors?.['required']">this field is Required</span>
-                    <span class="text-danger d-block" *ngIf="credit.errors?.['minlength' || 'maxlength']">credit number must be 6 digit</span>
-                    <span class="text-danger d-block" *ngIf="credit.errors?.['pattern']">only number is allowed !</span>
-                </div>
-            </div>
-            <div class="mb-lg-1 d-flex justify-content-end">
-                <button type="submit" [routerLink]="['/confirmation', totalPrice]" class="btn btn-primary mt-2" [disabled]="userForm.invalid">Submit</button>
-            </div>
-        </form>
     </div>
 </div>

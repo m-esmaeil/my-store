@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { Shopping } from '../shopping.model';
+import { Payment, Shopping } from '../shopping.model';
 import { ShoppingService } from '../shopping.service';
 
 
@@ -66,5 +66,14 @@ export class ShoppingCardComponent implements OnInit {
 
   update() {
     this.messageService.add({severity:'success', summary:'Updated Messege', detail:'your Product updated successfully!'});
+  }
+
+  receiveDataInParent(data: Payment){
+    if(!data){
+      this.route.navigateByUrl('404');
+    }else{
+      console.log(data);
+      this.route.navigateByUrl('/confirmation/' + data.totalPrice);
+    }
   }
 }

@@ -10,6 +10,7 @@ import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { PaymentFormComponent } from './payment-form/payment-form.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
         CardComponent,
         TitleBarComponent,
         ShoppingCardComponent,
-        ConfirmationComponent
+        ConfirmationComponent,
+        PaymentFormComponent
     ],
     imports: [
         CommonModule,
