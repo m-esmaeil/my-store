@@ -12,8 +12,11 @@
         in the top of page there is button to return to product list
     c- you can add product to cart by click on "add To Cart" button or by click on the same button in product details page.
     d- you can't add to cart if the count is zeroo, after adding you get alert messege.
+        also you can't add the same product to the cart you get alert with 
     e- after adding products to cart you can go to cart details by clicking link in nav bar
     f- in cart details you can see total price for every product and total price to all cart
+        if you change count of any of products total prices will update and you will get notification with that,
+        if you change count of prodcut to zeroo the card will delete and you will get notification with that
     g- in submit section there is validation required (username, address) and credit must 6 digit
     h- after submit you redirect to congratulation page with dispaly total price 
 
@@ -28,4 +31,5 @@
             - credit number required, must be 6 digits, accept only digit not letter
             - submit button is disable if form is invalide
     3- I am replace 'change' event in shopping with 'ngModelChange()' to update total price when count of item changed
-    4- 
+    4- for use '@Output' I am generate new payment-form component as child to shopping-cart and send data from child to parent by submit form
+        then using method to send data to parent using @output after check in parent make redirect to confimation page with total Price Of cart. 
